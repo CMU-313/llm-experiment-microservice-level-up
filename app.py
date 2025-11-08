@@ -11,8 +11,8 @@ def translator():
     content = request.args.get("content", default = "", type = str)
     is_english, translated_content = translate_content(content)
     return jsonify({
-        "is_english": is_english,
-        "translated_content": translated_content,
+        "is_english": bool(is_english),
+        "translated_content": str(translated_content),
     })
 
 
