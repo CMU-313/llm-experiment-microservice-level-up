@@ -25,22 +25,20 @@ OUTPUT: French
 """
 
 def get_language(post: str) -> str:
-    """Use Ollama model to detect the language of the input text."""
     prompt = f"{CLASSIFICATION_CONTEXT}\n\nINPUT: {post}\nOUTPUT:"
     response = client.chat(
         model=MODEL_NAME,
         messages=[{"role": "user", "content": prompt}]
     )
-    return response.message.content.strip()
+    return response["message"]["content"].strip()
 
 def get_translation(post: str) -> str:
-    """Use Ollama model to translate non-English text to English."""
     prompt = f"{TRANSLATION_CONTEXT}\n\nINPUT: {post}\nOUTPUT:"
     response = client.chat(
         model=MODEL_NAME,
         messages=[{"role": "user", "content": prompt}]
     )
-    return response.message.content.strip()
+    return response["message"]["content"].strip()
 
 def query_llm_robust(post: str) -> tuple[bool, str]:
     """Robust LLM query with full validation and fallback behavior."""
