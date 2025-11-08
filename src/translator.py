@@ -3,7 +3,7 @@ from ollama import Client
 
 # Initialize Ollama client
 OLLAMA_URL = os.getenv("OLLAMA_HOST", "http://localhost:11434")
-MODEL_NAME = os.getenv("OLLAMA_MODEL", "qwen2.5:7b")
+MODEL_NAME = os.getenv("OLLAMA_MODEL", "mistral:7b")
 
 client = Client(host=OLLAMA_URL)
 
